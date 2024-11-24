@@ -21,6 +21,5 @@ public class Sistema {
     public void alterarDetalhesEvento() {}
     public void atualizarDados() {}
     public void verificarStatusPagamento() {}
-    public void criarPerfilConvidado() {}
     public void gerarRelatorio() {}
 }

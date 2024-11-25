@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.mycompany.steamverde.UI;
-
+import javax.swing.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author PICHAU
@@ -34,7 +36,7 @@ public class IUCadastroCliente extends javax.swing.JDialog {
         cpf_text = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        codigo_text = new javax.swing.JTextField();
+        email_text = new javax.swing.JTextField();
         dataNascimento_text = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,9 +69,10 @@ public class IUCadastroCliente extends javax.swing.JDialog {
 
         jLabel11.setText("Email");
 
-        codigo_text.addActionListener(new java.awt.event.ActionListener() {
+        email_text.setName(""); // NOI18N
+        email_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigo_textActionPerformed(evt);
+                email_textActionPerformed(evt);
             }
         });
 
@@ -97,7 +100,7 @@ public class IUCadastroCliente extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(codigo_text, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email_text, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(39, 39, 39))
@@ -116,7 +119,7 @@ public class IUCadastroCliente extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(codigo_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -145,14 +148,61 @@ public class IUCadastroCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_nome_textActionPerformed
 
-    private void codigo_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigo_textActionPerformed
+    private void email_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_textActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_codigo_textActionPerformed
+    }//GEN-LAST:event_email_textActionPerformed
 
+    private void alertCadastro(String txt) {
+        JOptionPane.showMessageDialog(
+            null, 
+            txt, 
+            "Argumentos insuficientes", 
+            JOptionPane.WARNING_MESSAGE
+        );
+    }
+    
     private void cadastrar_botaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar_botaoActionPerformed
-        // TODO add your handling code here:        
-
+        // DO NOT JUDGE ME
+        // https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
+        // https://pt.stackoverflow.com/questions/11045/express%C3%A3o-regular-para-validar-um-campo-que-aceita-cpf-ou-cnpj
+        
+        int txtlen = email_text.getText().length();
+        if (txtlen < 1) {
+            alertCadastro("Endereço de e-mail não preenchido.");
+            return;
+        }
+        Pattern p_email = Pattern.compile("^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$");
+        boolean matchSuccessful = p_email.matcher(email_text.getText()).find();
+        if (!matchSuccessful) {
+            alertCadastro("Endereço de e-mail inválido.");
+            return;
+        }
+        
+        txtlen = nome_text.getText().length();
+        if (txtlen < 1) {
+            alertCadastro("Nome não preenchido.");
+            return;
+        }
+        
+        txtlen = cpf_text.getText().length();
+        if (txtlen < 1) {
+            alertCadastro("CPF não preenchido.");
+            return;
+        }
+        Pattern p_cpf = Pattern.compile("([0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2})");
+        matchSuccessful = p_cpf.matcher(cpf_text.getText()).find();
+        if (!matchSuccessful) {        
+            alertCadastro("CPF inválido.");
+            return;
+        }
+        
+        Pattern p_datebirth = Pattern.compile("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{4})$");
+        matchSuccessful = p_datebirth.matcher(dataNascimento_text.getText()).find();
+        if (!matchSuccessful) {
+            alertCadastro("Data de nascimento inválida.");
+            return;
+        }
         this.dispose();
     }//GEN-LAST:event_cadastrar_botaoActionPerformed
 
@@ -219,9 +269,9 @@ public class IUCadastroCliente extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar_botao;
-    private javax.swing.JTextField codigo_text;
     private javax.swing.JTextField cpf_text;
     private javax.swing.JFormattedTextField dataNascimento_text;
+    private javax.swing.JTextField email_text;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

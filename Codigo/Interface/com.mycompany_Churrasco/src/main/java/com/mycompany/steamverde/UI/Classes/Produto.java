@@ -16,6 +16,6 @@ public class Produto {
     private int quantidadeComprar;
     
     public void atualizarQuantidade(int novaQuantidade) {}
-    public float calcularValorTotal() {}
+    public float calcularValorTotal() { return 0.0f; }
     public void registrarProduto(String nomeProduto, Categoria categoria, float preco, int quantidadeComprar) {}
 }

@@ -25,7 +25,7 @@ public class Evento {
     public void adicionarProduto(Produto produto) {}
     public void decrementarProduto(Produto produto) {}
     public void calcularDivisaoCustos() {}
-    public Relatorio gerarRelatorio(Relatorio tipoRelatorio) {}
+    public Relatorio gerarRelatorio(Relatorio tipoRelatorio) { return new Relatorio(); }
     public void atualizarInformacoes(LocalDate data, String local, String nomeEvento) {}
     public void enviarConvite(Membro membro) {}
     public void atribuirCustos(Participante participante) {}

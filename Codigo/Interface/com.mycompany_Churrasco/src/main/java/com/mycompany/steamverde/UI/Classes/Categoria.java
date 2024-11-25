@@ -15,5 +15,7 @@ public class Categoria {
     private static final String bebidasAlcoolicas = "";
     private static final String bebidasNaoAlcoolicas = "";
     
-    public Categoria definirCategoria() {}
+    public Categoria definirCategoria() {
+        return new Categoria();
+    }
 }

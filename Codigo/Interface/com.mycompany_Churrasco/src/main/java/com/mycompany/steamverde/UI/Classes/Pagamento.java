@@ -18,7 +18,7 @@ public class Pagamento {
     private StatusPagamento status;
     
     public void realizarPagamento(float valor) {}
-    public StatusPagamento consultarStatus() {}
-    public StatusPagamento verificarStatusPagamento(Participante participante) {}
+    public StatusPagamento consultarStatus() { return new StatusPagamento(); }
+    public StatusPagamento verificarStatusPagamento(Participante participante) { return new StatusPagamento(); }
     public void atualizarStatusPagamento(Participante participante) {}
 }

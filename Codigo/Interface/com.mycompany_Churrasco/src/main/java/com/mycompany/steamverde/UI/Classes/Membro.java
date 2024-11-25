@@ -22,16 +22,16 @@ public class Membro {
     public void login(String email, String senha) {}
     public void atualizarDados(String endereco, String telefone) {}
     public void selecionarCategoriaAlimentar(CategoriaAlimentar novaCategoria) {}
-    public StatusPagamento consultarPagamento() {}
-    public Evento criarEvento(Evento evento) {}
+    public StatusPagamento consultarPagamento() { return new StatusPagamento(); }
+    public Evento criarEvento(Evento evento) { return new Evento(); }
     public void finalizarEvento(Evento evento) {}
     public void alterarDadosEvento(Evento evento) {}
-    public StatusParticipante atualizarStatus() {}
+    public StatusParticipante atualizarStatus() { return new StatusParticipante(); }
     public void cancelarInscricao(Evento evento) {}
-    public CategoriaAlimentar consultarCategoriaAlimentar() {}
+    public CategoriaAlimentar consultarCategoriaAlimentar() { return new CategoriaAlimentar(); }
     public void responderConvite(StatusParticipante resposta) {}
     public void calcularDivisaoCustos() {}
-    public Relatorio solicitarRelatorio(Relatorio tipoRelatorio) {}
+    public Relatorio solicitarRelatorio(Relatorio tipoRelatorio) { return new Relatorio(); }
     public void realizarPagamento(float valor) {}
     public void verificarDevedor(Participante participante) {}
     public void redefinirSenha(String senha) {}

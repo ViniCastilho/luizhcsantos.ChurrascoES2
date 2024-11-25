@@ -29,83 +29,84 @@ public class IUPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem28 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem30 = new javax.swing.JMenuItem();
+        menuCadastro = new javax.swing.JMenu();
+        cadastroCliente = new javax.swing.JMenuItem();
+        menuComprar = new javax.swing.JMenu();
+        comprarProdutos = new javax.swing.JMenuItem();
+        menuRelatorios = new javax.swing.JMenu();
+        relatoriosTesteCase = new javax.swing.JMenuItem();
+        menuDadosSalvos = new javax.swing.JMenu();
+        dadosSalvosDeletarDados = new javax.swing.JMenuItem();
+        menuPerfil = new javax.swing.JMenu();
+        perfilUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Cadastro");
+        menuCadastro.setText("Cadastro");
+        menuCadastro.setName(""); // NOI18N
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        cadastroCliente.setText("Cliente");
+        cadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                cadastroClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuCadastro.add(cadastroCliente);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuCadastro);
 
-        jMenu2.setText("Comprar");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        menuComprar.setText("Comprar");
+        menuComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                menuComprarActionPerformed(evt);
             }
         });
 
-        jMenuItem3.setText("Produtos");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        comprarProdutos.setText("Produtos");
+        comprarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                comprarProdutosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        menuComprar.add(comprarProdutos);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuComprar);
 
-        jMenu5.setText("Relatórios");
+        menuRelatorios.setText("Relatórios");
 
-        jMenuItem28.setText("Test Case");
-        jMenuItem28.addActionListener(new java.awt.event.ActionListener() {
+        relatoriosTesteCase.setText("Test Case");
+        relatoriosTesteCase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem28ActionPerformed(evt);
+                relatoriosTesteCaseActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem28);
+        menuRelatorios.add(relatoriosTesteCase);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(menuRelatorios);
 
-        jMenu4.setText("Dados salvos");
+        menuDadosSalvos.setText("Dados salvos");
 
-        jMenuItem4.setText("Deletar dados");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        dadosSalvosDeletarDados.setText("Deletar dados");
+        dadosSalvosDeletarDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                dadosSalvosDeletarDadosActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        menuDadosSalvos.add(dadosSalvosDeletarDados);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuDadosSalvos);
 
-        jMenu3.setText("Perfil");
+        menuPerfil.setText("Perfil");
 
-        jMenuItem30.setText("Perfil do usuario");
-        jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
+        perfilUsuario.setText("Perfil do usuario");
+        perfilUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem30ActionPerformed(evt);
+                perfilUsuarioActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem30);
+        menuPerfil.add(perfilUsuario);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuPerfil);
 
         setJMenuBar(jMenuBar1);
 
@@ -123,42 +124,42 @@ public class IUPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
         // TODO add your handling code here:
         IUCadastroCliente IUcli = new IUCadastroCliente(this,true);
         IUcli.setLocationRelativeTo(this);
         IUcli.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_cadastroClienteActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void comprarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarProdutosActionPerformed
         // TODO add your handling code here:
         IUVenda IU = new IUVenda(this,true);
         IU.setLocationRelativeTo(this);
         IU.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_comprarProdutosActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void menuComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuComprarActionPerformed
         // TODO add your handling code here:    
         
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_menuComprarActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void dadosSalvosDeletarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dadosSalvosDeletarDadosActionPerformed
         // TODO add your handling code here:               
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_dadosSalvosDeletarDadosActionPerformed
 
-    private void jMenuItem28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem28ActionPerformed
+    private void relatoriosTesteCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriosTesteCaseActionPerformed
         // TODO add your handling code here:
 //        IURelatorio relatorio = new IURelatorio(this,false);
 //        LocadoraDeVeiculos locadora = new LocadoraDeVeiculos();
 //        relatorio.exibir("Relatorio de clientes", "Relatorio de clientes", locadora.ClientesAtrasados());  ///////////////////
-    }//GEN-LAST:event_jMenuItem28ActionPerformed
+    }//GEN-LAST:event_relatoriosTesteCaseActionPerformed
 
-    private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
+    private void perfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilUsuarioActionPerformed
         // TODO add your handling code here:
         IUPerfilUsuario IU = new IUPerfilUsuario(this,true);
         IU.setLocationRelativeTo(this);
         IU.setVisible(true);
-    }//GEN-LAST:event_jMenuItem30ActionPerformed
+    }//GEN-LAST:event_perfilUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,16 +202,16 @@ public class IUPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuItem cadastroCliente;
+    private javax.swing.JMenuItem comprarProdutos;
+    private javax.swing.JMenuItem dadosSalvosDeletarDados;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem28;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem30;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuComprar;
+    private javax.swing.JMenu menuDadosSalvos;
+    private javax.swing.JMenu menuPerfil;
+    private javax.swing.JMenu menuRelatorios;
+    private javax.swing.JMenuItem perfilUsuario;
+    private javax.swing.JMenuItem relatoriosTesteCase;
     // End of variables declaration//GEN-END:variables
 }

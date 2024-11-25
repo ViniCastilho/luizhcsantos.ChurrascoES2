@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.mycompany.steamverde.UI;
+import com.mycompany.steamverde.UI.Classes.Membro;
+import com.mycompany.steamverde.UI.Classes.Sistema;
 import javax.swing.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.time.*;
 /**
  *
  * @author PICHAU
@@ -173,6 +176,7 @@ public class IUCadastroCliente extends javax.swing.JDialog {
             return;
         }
         Pattern p_email = Pattern.compile("^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$");
+        email_text.setText(email_text.getText().toLowerCase());
         boolean matchSuccessful = p_email.matcher(email_text.getText()).find();
         if (!matchSuccessful) {
             alertCadastro("Endereço de e-mail inválido.");
@@ -203,6 +207,17 @@ public class IUCadastroCliente extends javax.swing.JDialog {
             alertCadastro("Data de nascimento inválida.");
             return;
         }
+        JOptionPane.showMessageDialog(
+            null, 
+            "O cadastro foi realizado com sucesso.",
+            "Cadastro bem sucedido",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        Sistema sys = Sistema.getinstancia();
+        Membro mem = new Membro();
+        mem.setNome(nome_text.getText());
+        mem.setEmail(email_text.getText());
+        sys.listaMembros.add(mem);
         this.dispose();
     }//GEN-LAST:event_cadastrar_botaoActionPerformed
 

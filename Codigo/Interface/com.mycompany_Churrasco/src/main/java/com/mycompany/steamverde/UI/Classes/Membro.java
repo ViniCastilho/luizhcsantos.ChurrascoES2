@@ -19,6 +19,82 @@ public class Membro {
     private TipoUsuario tipoUsuario;
     private StatusPagamento statusPagamento;
     
+    public Membro() {
+        
+    }
+
+    public int getIdMembro() {
+        return idMembro;
+    }
+
+    public void setIdMembro(int idMembro) {
+        this.idMembro = idMembro;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setCategoriaAlimentar(CategoriaAlimentar categoriaAlimentar) {
+        this.categoriaAlimentar = categoriaAlimentar;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public void setStatusPagamento(StatusPagamento statusPagamento) {
+        this.statusPagamento = statusPagamento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public CategoriaAlimentar getCategoriaAlimentar() {
+        return categoriaAlimentar;
+    }
+
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public StatusPagamento getStatusPagamento() {
+        return statusPagamento;
+    }
+    
     public void login(String email, String senha) {}
     public void atualizarDados(String endereco, String telefone) {}
     public void selecionarCategoriaAlimentar(CategoriaAlimentar novaCategoria) {}

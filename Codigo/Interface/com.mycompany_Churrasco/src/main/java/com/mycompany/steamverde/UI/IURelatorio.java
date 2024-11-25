@@ -4,6 +4,9 @@
  */
 package com.mycompany.steamverde.UI;
 
+import com.mycompany.steamverde.UI.Classes.Membro;
+import com.mycompany.steamverde.UI.Classes.Sistema;
+
 /**
  *
  * @author PICHAU
@@ -23,6 +26,20 @@ public class IURelatorio extends javax.swing.JDialog {
         labelTitulo.setText(Titulo);
         textRelatorio.setText(relatorio);
         setVisible(true);
+    }
+    
+    public void relatoriotodosmembros() {
+        System.out.println("AQUI");
+        Sistema sys = Sistema.getinstancia();
+        String ln = "NOME, E-MAIL;\n\n";
+        for (int i = 0; i < sys.listaMembros.size(); i++) {
+            Membro mem = sys.listaMembros.get(i);
+            ln = ln + String.format("%s, %s\n\n", mem.getNome(), mem.getEmail());
+            System.out.println(String.format("%s %s\n", mem.getNome(), mem.getEmail()));
+        }
+        textRelatorio.setEditable(true);
+        textRelatorio.setText(ln);
+        textRelatorio.setEditable(false);
     }
 
     /**
@@ -55,10 +72,10 @@ public class IURelatorio extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                    .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

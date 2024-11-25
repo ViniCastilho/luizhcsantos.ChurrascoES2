@@ -43,12 +43,16 @@
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="relatoriosTesteCase">
+            <MenuItem class="javax.swing.JMenuItem" name="relatorioMembros">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Test Case"/>
+                <Property name="text" type="java.lang.String" value="Todos Membros"/>
+                <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatoriosTesteCaseActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatorioMembrosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

@@ -4,6 +4,9 @@
  */
 package com.mycompany.steamverde.UI;
 
+import java.util.List;
+import com.mycompany.steamverde.UI.*;
+import com.mycompany.steamverde.UI.Classes.Membro;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,12 +14,15 @@ import javax.swing.JOptionPane;
  * @author PICHAU
  */
 public class IUPrincipal extends javax.swing.JFrame {
-
     /**
      * Creates new form IUPrincipal
      */
     public IUPrincipal() {
         initComponents();
+    }
+    
+    public void addMembro(String email, String nome, String dataniver) {
+        
     }
 
     /**
@@ -34,7 +40,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         menuComprar = new javax.swing.JMenu();
         comprarProdutos = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
-        relatoriosTesteCase = new javax.swing.JMenuItem();
+        relatorioMembros = new javax.swing.JMenuItem();
         menuDadosSalvos = new javax.swing.JMenu();
         dadosSalvosDeletarDados = new javax.swing.JMenuItem();
         menuPerfil = new javax.swing.JMenu();
@@ -74,13 +80,15 @@ public class IUPrincipal extends javax.swing.JFrame {
 
         menuRelatorios.setText("Relatórios");
 
-        relatoriosTesteCase.setText("Test Case");
-        relatoriosTesteCase.addActionListener(new java.awt.event.ActionListener() {
+        relatorioMembros.setText("Todos Membros");
+        relatorioMembros.setName(""); // NOI18N
+        relatorioMembros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                relatoriosTesteCaseActionPerformed(evt);
+                relatorioMembrosActionPerformed(evt);
             }
         });
-        menuRelatorios.add(relatoriosTesteCase);
+        menuRelatorios.add(relatorioMembros);
+        relatorioMembros.getAccessibleContext().setAccessibleName("");
 
         jMenuBar1.add(menuRelatorios);
 
@@ -147,12 +155,14 @@ public class IUPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:               
     }//GEN-LAST:event_dadosSalvosDeletarDadosActionPerformed
 
-    private void relatoriosTesteCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriosTesteCaseActionPerformed
+    private void relatorioMembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioMembrosActionPerformed
         // TODO add your handling code here:
-//        IURelatorio relatorio = new IURelatorio(this,false);
-//        LocadoraDeVeiculos locadora = new LocadoraDeVeiculos();
-//        relatorio.exibir("Relatorio de clientes", "Relatorio de clientes", locadora.ClientesAtrasados());  ///////////////////
-    }//GEN-LAST:event_relatoriosTesteCaseActionPerformed
+        IURelatorio IU = new IURelatorio(this, true);
+        System.out.println("gerarrelatoriomembros");
+        IU.relatoriotodosmembros();
+        IU.setLocationRelativeTo(this);
+        IU.setVisible(true);
+    }//GEN-LAST:event_relatorioMembrosActionPerformed
 
     private void perfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilUsuarioActionPerformed
         // TODO add your handling code here:
@@ -212,6 +222,6 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenuItem perfilUsuario;
-    private javax.swing.JMenuItem relatoriosTesteCase;
+    private javax.swing.JMenuItem relatorioMembros;
     // End of variables declaration//GEN-END:variables
 }

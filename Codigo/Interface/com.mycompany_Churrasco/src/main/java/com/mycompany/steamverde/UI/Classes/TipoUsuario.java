@@ -9,7 +9,7 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class TipoUsuario {
-    private static final String ORGANIZADOR = "";
-    private static final String PERMANENTE = "";
-    private static final String CONVIDADO = "";
+    private static final String ORGANIZADOR = "ORGANIZADOR";
+    private static final String PERMANENTE = "PERMANENTE";
+    private static final String CONVIDADO = "CONVIDADO";
 }

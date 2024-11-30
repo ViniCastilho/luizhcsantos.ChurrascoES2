@@ -9,8 +9,8 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class TipoRelatorio {
-    private static final String DESPESAS_MENSAIS = "";
-    private static final String DESPESAS_EVENTO = "";
-    private static final String DESPESAS_MEMBROS = "";
-    private static final String MEMBROS_DEVEDORES = "";
+    private static final String DESPESAS_MENSAIS = "DESPESAS MENSAIS";
+    private static final String DESPESAS_EVENTO = "DESPESAS DE EVENTO";
+    private static final String DESPESAS_MEMBROS = "DESPESAS DE MEMBROS";
+    private static final String MEMBROS_DEVEDORES = "DESPESAS DE DEVEDORES";
 }

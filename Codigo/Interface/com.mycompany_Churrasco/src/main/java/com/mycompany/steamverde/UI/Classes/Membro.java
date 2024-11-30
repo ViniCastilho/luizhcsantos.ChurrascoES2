@@ -15,9 +15,9 @@ public class Membro {
     private String senha;
     private String endereco;
     private String telefone;
-    private CategoriaAlimentar categoriaAlimentar;
-    private TipoUsuario tipoUsuario;
-    private StatusPagamento statusPagamento;
+    private String categoriaAlimentar;
+    private String tipoUsuario;
+    private String statusPagamento;
     
     public Membro() {
         
@@ -51,15 +51,15 @@ public class Membro {
         this.telefone = telefone;
     }
 
-    public void setCategoriaAlimentar(CategoriaAlimentar categoriaAlimentar) {
+    public void setCategoriaAlimentar(String categoriaAlimentar) {
         this.categoriaAlimentar = categoriaAlimentar;
     }
 
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+    public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public void setStatusPagamento(StatusPagamento statusPagamento) {
+    public void setStatusPagamento(String statusPagamento) {
         this.statusPagamento = statusPagamento;
     }
 
@@ -83,20 +83,24 @@ public class Membro {
         return telefone;
     }
 
-    public CategoriaAlimentar getCategoriaAlimentar() {
+    public String getCategoriaAlimentar() {
         return categoriaAlimentar;
     }
 
-    public TipoUsuario getTipoUsuario() {
+    public String getTipoUsuario() {
         return tipoUsuario;
     }
 
-    public StatusPagamento getStatusPagamento() {
+    public String getStatusPagamento() {
         return statusPagamento;
     }
     
-    public void login(String email, String senha) {}
-    public void atualizarDados(String endereco, String telefone) {}
+    public void login(String email, String senha) {
+    
+    }
+    public void atualizarDados(String endereco, String telefone) {
+    
+    }
     public void selecionarCategoriaAlimentar(CategoriaAlimentar novaCategoria) {}
     public StatusPagamento consultarPagamento() { return new StatusPagamento(); }
     public Evento criarEvento(Evento evento) { return new Evento(); }

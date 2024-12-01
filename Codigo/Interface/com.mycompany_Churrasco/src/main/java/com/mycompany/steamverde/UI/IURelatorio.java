@@ -29,7 +29,6 @@ public class IURelatorio extends javax.swing.JDialog {
     }
     
     public void relatoriotodosmembros() {
-        System.out.println("AQUI");
         Sistema sys = Sistema.getinstancia();
         String ln = String.format("- %d MEMBRO(S)\n\n", sys.listaMembros.size());
         String fmt = "NOME....: %s\n"+
@@ -51,7 +50,6 @@ public class IURelatorio extends javax.swing.JDialog {
                 mem.getTipoUsuario(),
                 mem.getStatusPagamento()
             );
-            System.out.println(String.format("%s %s\n", mem.getNome(), mem.getEmail()));
         }
         textRelatorio.setEditable(true);
         textRelatorio.setText(ln);

@@ -5,7 +5,6 @@
 package com.mycompany.steamverde.UI.Classes;
 import java.util.*;
 
-
 /**
  *
  * @author Microsoft
@@ -23,6 +22,20 @@ public class Sistema {
     
     private Sistema() {
         listaMembros = new ArrayList<>();
+        // ...
+        if (listaMembros.size() == 0) {
+            Membro admin = new Membro();
+            admin.setNome("Administrador");
+            admin.setEmail("admin@churras.com.br");
+            admin.setSenha("admin");
+            admin.setIdMembro(0);
+            admin.setStatusPagamento(StatusPagamento.ATIVO);
+            admin.setTelefone("99999999999");
+            admin.setEndereco("MUNDO VIRTUAL, 10");
+            admin.setTipoUsuario(TipoUsuario.PERMANENTE);
+            admin.setCategoriaAlimentar(CategoriaAlimentar.ONIVORO);
+            listaMembros.add(admin);
+        }
     }
     
     public void selecionarOrganizadorAleatorio() {}

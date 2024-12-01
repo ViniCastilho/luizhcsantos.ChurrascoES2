@@ -166,7 +166,7 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void perfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilUsuarioActionPerformed
         // TODO add your handling code here:
-        IUPerfilUsuario IU = new IUPerfilUsuario(this,true);
+        IUPerfilMembro IU = new IUPerfilMembro(this,true);
         IU.setLocationRelativeTo(this);
         IU.setVisible(true);
     }//GEN-LAST:event_perfilUsuarioActionPerformed

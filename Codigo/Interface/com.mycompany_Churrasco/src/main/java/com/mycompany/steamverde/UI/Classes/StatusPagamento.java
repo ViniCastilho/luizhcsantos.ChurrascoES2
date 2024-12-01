@@ -9,6 +9,6 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class StatusPagamento {
-    private static final String ATIVO = "ATIVO";
-    private static final String DEVEDOR = "DEVEDOR";
+    public static final String ATIVO = "ATIVO";
+    public static final String DEVEDOR = "DEVEDOR";
 }

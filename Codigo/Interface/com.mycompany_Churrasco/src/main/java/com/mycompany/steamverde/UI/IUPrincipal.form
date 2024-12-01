@@ -12,7 +12,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="cadastroCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cliente"/>
+                <Property name="text" type="java.lang.String" value="Membro Permanente"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroClienteActionPerformed"/>
@@ -79,7 +79,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="perfilUsuario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Perfil do usuario"/>
+                <Property name="text" type="java.lang.String" value="Perfil Membro"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="perfilUsuarioActionPerformed"/>

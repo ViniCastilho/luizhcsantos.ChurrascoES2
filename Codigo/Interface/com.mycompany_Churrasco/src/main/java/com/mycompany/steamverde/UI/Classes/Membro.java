@@ -18,10 +18,6 @@ public class Membro {
     private String categoriaAlimentar;
     private String tipoUsuario;
     private String statusPagamento;
-    
-    public Membro() {
-        
-    }
 
     public int getIdMembro() {
         return idMembro;
@@ -95,18 +91,33 @@ public class Membro {
         return statusPagamento;
     }
     
-    public void login(String email, String senha) {
-    
+    public void login(String email, String senha) throws Exception {
+        boolean eqmail;
+        boolean eqpass;
+        eqmail = this.getEmail().equals(email);
+        eqpass = this.getSenha().equals(senha);
+        if (!(eqmail && eqpass)) {
+            throw new Exception("Parâmetros senha ou e-mail incorretos.");
+        }
     }
     public void atualizarDados(String endereco, String telefone) {
-    
+        this.setEndereco(endereco);
+        this.setTelefone(telefone);
     }
-    public void selecionarCategoriaAlimentar(CategoriaAlimentar novaCategoria) {}
-    public StatusPagamento consultarPagamento() { return new StatusPagamento(); }
-    public Evento criarEvento(Evento evento) { return new Evento(); }
+    public void selecionarCategoriaAlimentar(String novaCategoria) {
+        this.setCategoriaAlimentar(novaCategoria);
+    }
+    public String consultarPagamento() {
+        return this.getStatusPagamento();
+    }
+    public Evento criarEvento(Evento evento) {
+        return new Evento();
+    }
     public void finalizarEvento(Evento evento) {}
     public void alterarDadosEvento(Evento evento) {}
-    public StatusParticipante atualizarStatus() { return new StatusParticipante(); }
+    public StatusParticipante atualizarStatus() {
+        return new StatusParticipante();
+    }
     public void cancelarInscricao(Evento evento) {}
     public CategoriaAlimentar consultarCategoriaAlimentar() { return new CategoriaAlimentar(); }
     public void responderConvite(StatusParticipante resposta) {}

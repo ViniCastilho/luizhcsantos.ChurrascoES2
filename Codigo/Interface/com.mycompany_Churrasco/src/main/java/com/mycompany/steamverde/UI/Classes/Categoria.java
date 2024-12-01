@@ -9,13 +9,9 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class Categoria {
-    private static final String proteinaAnimal = "PROTEÍNA ANIMAL";
-    private static final String proteinaNaoAnimal = "PROTEÍNA NÃO ANIMAL";
-    private static final String derivadosLeite = "LEITE E DERIVADOS";
-    private static final String bebidasAlcoolicas = "BEBIDAS ALCÓOLICAS";
-    private static final String bebidasNaoAlcoolicas = "BEBIDAS NÃO ALCÓOLICAS";
-    
-    public Categoria definirCategoria() {
-        return new Categoria();
-    }
+    public static final String proteinaAnimal = "PROTEÍNA ANIMAL";
+    public static final String proteinaNaoAnimal = "PROTEÍNA NÃO ANIMAL";
+    public static final String derivadosLeite = "LEITE E DERIVADOS";
+    public static final String bebidasAlcoolicas = "BEBIDAS ALCÓOLICAS";
+    public static final String bebidasNaoAlcoolicas = "BEBIDAS NÃO ALCÓOLICAS";
 }

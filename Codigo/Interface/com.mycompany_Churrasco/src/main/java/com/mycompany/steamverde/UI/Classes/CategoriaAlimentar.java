@@ -9,8 +9,8 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class CategoriaAlimentar {
-    private static final String ONIVORO = "ONÍVORO";
-    private static final String CARNIVORO = "CARNÍVORO";
-    private static final String VEGETARIANO = "VEGETARIANO";
-    private static final String VEGANO = "VEGANO";
+    public static final String ONIVORO = "ONÍVORO";
+    public static final String CARNIVORO = "CARNÍVORO";
+    public static final String VEGETARIANO = "VEGETARIANO";
+    public static final String VEGANO = "VEGANO";
 }

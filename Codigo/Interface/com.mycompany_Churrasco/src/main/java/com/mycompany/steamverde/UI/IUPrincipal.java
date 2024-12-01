@@ -51,7 +51,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         menuCadastro.setText("Cadastro");
         menuCadastro.setName(""); // NOI18N
 
-        cadastroCliente.setText("Cliente");
+        cadastroCliente.setText("Membro Permanente");
         cadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastroClienteActionPerformed(evt);
@@ -106,7 +106,7 @@ public class IUPrincipal extends javax.swing.JFrame {
 
         menuPerfil.setText("Perfil");
 
-        perfilUsuario.setText("Perfil do usuario");
+        perfilUsuario.setText("Perfil Membro");
         perfilUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 perfilUsuarioActionPerformed(evt);
@@ -134,7 +134,7 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
         // TODO add your handling code here:
-        IUCadastroCliente IUcli = new IUCadastroCliente(this,true);
+        IUCadastroMembroPermanente IUcli = new IUCadastroMembroPermanente(this,true);
         IUcli.setLocationRelativeTo(this);
         IUcli.setVisible(true);
     }//GEN-LAST:event_cadastroClienteActionPerformed

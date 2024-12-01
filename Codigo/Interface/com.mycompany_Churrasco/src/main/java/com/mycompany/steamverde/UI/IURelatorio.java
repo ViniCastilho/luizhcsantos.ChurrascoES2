@@ -31,10 +31,26 @@ public class IURelatorio extends javax.swing.JDialog {
     public void relatoriotodosmembros() {
         System.out.println("AQUI");
         Sistema sys = Sistema.getinstancia();
-        String ln = "NOME, E-MAIL;\n\n";
+        String ln = String.format("- %d MEMBRO(S)\n\n", sys.listaMembros.size());
+        String fmt = "NOME....: %s\n"+
+                     "E-MAIL..: %s\n"+
+                     "ENDEREÇO: %s\n"+
+                     "TELEFONE: %s\n"+
+                     "CAT-ALIM: %s\n"+
+                     "TIPO-USU: %s\n"+
+                     "STATUS-P: %s\n"+
+                     "\n";
         for (int i = 0; i < sys.listaMembros.size(); i++) {
             Membro mem = sys.listaMembros.get(i);
-            ln = ln + String.format("%s, %s\n\n", mem.getNome(), mem.getEmail());
+            ln = ln + String.format(fmt, 
+                mem.getNome(),
+                mem.getEmail(),
+                mem.getEndereco(),
+                mem.getTelefone(),
+                mem.getCategoriaAlimentar(),
+                mem.getTipoUsuario(),
+                mem.getStatusPagamento()
+            );
             System.out.println(String.format("%s %s\n", mem.getNome(), mem.getEmail()));
         }
         textRelatorio.setEditable(true);
@@ -58,11 +74,11 @@ public class IURelatorio extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelTitulo.setText("Relatórios");
+        labelTitulo.setText("RELATÓRIO");
 
         textRelatorio.setEditable(false);
         textRelatorio.setColumns(20);
-        textRelatorio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textRelatorio.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         textRelatorio.setRows(5);
         jScrollPane1.setViewportView(textRelatorio);
 
@@ -71,20 +87,23 @@ public class IURelatorio extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(501, 501, 501))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addContainerGap()
+                .addComponent(labelTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();

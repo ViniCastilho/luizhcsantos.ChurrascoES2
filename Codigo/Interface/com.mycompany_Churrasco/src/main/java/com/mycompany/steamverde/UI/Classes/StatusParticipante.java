@@ -9,6 +9,6 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class StatusParticipante {
-    private static final int CONFIRMADO = 0;
-    private static final int PENDENTE = 1;
+    public static final int CONFIRMADO = 0;
+    public static final int PENDENTE = 1;
 }

@@ -254,7 +254,7 @@ public class IUCadastroMembroPermanente extends javax.swing.JDialog {
         );
         Sistema sys = Sistema.getinstancia();
         Membro mem = new Membro();
-        mem.setIdMembro(sys.listaMembros.size());
+        mem.setIdMembro(sys.listamembros.size());
         mem.setNome(nome_text.getText());
         mem.setEmail(email_text.getText());
         mem.setSenha(senha_text.getText());
@@ -263,7 +263,7 @@ public class IUCadastroMembroPermanente extends javax.swing.JDialog {
         mem.setStatusPagamento(StatusPagamento.ATIVO);
         mem.setCategoriaAlimentar(catalim.getSelectedItem().toString());
         mem.setTipoUsuario(TipoUsuario.PERMANENTE);
-        sys.listaMembros.add(mem);
+        sys.listamembros.add(mem);
         this.dispose();
     }//GEN-LAST:event_cadastrar_botaoActionPerformed
 

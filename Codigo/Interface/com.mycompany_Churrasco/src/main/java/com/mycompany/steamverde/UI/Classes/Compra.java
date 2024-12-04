@@ -4,6 +4,8 @@
  */
 package com.mycompany.steamverde.UI.Classes;
 
+import java.util.List;
+
 /**
  *
  * @author Microsoft
@@ -11,7 +13,7 @@ package com.mycompany.steamverde.UI.Classes;
 public class Compra {
     private int idCompra;
     private Evento evento;
-    private Produto produto;
+    private Produto produtos;
     private int qtdComprada;
     private float valorTotal;
     

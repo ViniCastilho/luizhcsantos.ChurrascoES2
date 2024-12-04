@@ -7,6 +7,8 @@ package com.mycompany.steamverde.UI;
 import java.util.List;
 import com.mycompany.steamverde.UI.*;
 import com.mycompany.steamverde.UI.Classes.Membro;
+import com.mycompany.steamverde.UI.Classes.Sistema;
+import com.mycompany.steamverde.UI.Classes.TipoUsuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,11 +36,18 @@ public class IUPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        userfield = new javax.swing.JTextField();
+        welcome = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        passfield = new javax.swing.JPasswordField();
+        loginbtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         cadastroCliente = new javax.swing.JMenuItem();
-        menuComprar = new javax.swing.JMenu();
+        menuOrganização = new javax.swing.JMenu();
         comprarProdutos = new javax.swing.JMenuItem();
+        eventos = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         relatorioMembros = new javax.swing.JMenuItem();
         menuDadosSalvos = new javax.swing.JMenu();
@@ -47,6 +56,25 @@ public class IUPrincipal extends javax.swing.JFrame {
         perfilUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("E-MAIL");
+
+        userfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userfieldActionPerformed(evt);
+            }
+        });
+
+        welcome.setText("@");
+
+        jLabel3.setText("SENHA");
+
+        loginbtn.setText("ENTRAR");
+        loginbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginbtnActionPerformed(evt);
+            }
+        });
 
         menuCadastro.setText("Cadastro");
         menuCadastro.setName(""); // NOI18N
@@ -61,10 +89,10 @@ public class IUPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuCadastro);
 
-        menuComprar.setText("Comprar");
-        menuComprar.addActionListener(new java.awt.event.ActionListener() {
+        menuOrganização.setText("Organização");
+        menuOrganização.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuComprarActionPerformed(evt);
+                menuOrganizaçãoActionPerformed(evt);
             }
         });
 
@@ -74,9 +102,17 @@ public class IUPrincipal extends javax.swing.JFrame {
                 comprarProdutosActionPerformed(evt);
             }
         });
-        menuComprar.add(comprarProdutos);
+        menuOrganização.add(comprarProdutos);
 
-        jMenuBar1.add(menuComprar);
+        eventos.setText("Eventos");
+        eventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventosActionPerformed(evt);
+            }
+        });
+        menuOrganização.add(eventos);
+
+        jMenuBar1.add(menuOrganização);
 
         menuRelatorios.setText("Relatórios");
 
@@ -122,11 +158,36 @@ public class IUPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userfield)
+                    .addComponent(passfield)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(welcome)
+                            .addComponent(jLabel3)
+                            .addComponent(loginbtn))
+                        .addGap(0, 315, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginbtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addComponent(welcome)
+                .addContainerGap())
         );
 
         pack();
@@ -134,6 +195,11 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
         // TODO add your handling code here:
+        Sistema sys = Sistema.getinstancia();
+        Membro m = sys.curruser();
+        if (m == null || m.getTipoUsuario().equals(TipoUsuario.CONVIDADO)) {
+            return;
+        }
         IUCadastroMembroPermanente IUcli = new IUCadastroMembroPermanente(this,true);
         IUcli.setLocationRelativeTo(this);
         IUcli.setVisible(true);
@@ -141,15 +207,15 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void comprarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarProdutosActionPerformed
         // TODO add your handling code here:
-        IUVenda IU = new IUVenda(this,true);
+        IUCompra IU = new IUCompra(this,true);
         IU.setLocationRelativeTo(this);
         IU.setVisible(true);
     }//GEN-LAST:event_comprarProdutosActionPerformed
 
-    private void menuComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuComprarActionPerformed
+    private void menuOrganizaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOrganizaçãoActionPerformed
         // TODO add your handling code here:    
         
-    }//GEN-LAST:event_menuComprarActionPerformed
+    }//GEN-LAST:event_menuOrganizaçãoActionPerformed
 
     private void dadosSalvosDeletarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dadosSalvosDeletarDadosActionPerformed
         // TODO add your handling code here:               
@@ -157,8 +223,13 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void relatorioMembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioMembrosActionPerformed
         // TODO add your handling code here:
+        Sistema sys = Sistema.getinstancia();
+        Membro m = sys.curruser();
+        if (m == null || m.getTipoUsuario().equals(TipoUsuario.CONVIDADO)) {
+            return;
+        }
+        
         IURelatorio IU = new IURelatorio(this, true);
-        System.out.println("gerarrelatoriomembros");
         IU.relatoriotodosmembros();
         IU.setLocationRelativeTo(this);
         IU.setVisible(true);
@@ -166,10 +237,50 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void perfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilUsuarioActionPerformed
         // TODO add your handling code here:
+        Sistema sys = Sistema.getinstancia();
+        Membro m = sys.curruser();
+        if (m == null || m.getTipoUsuario().equals(TipoUsuario.CONVIDADO)) {
+            return;
+        }
         IUPerfilMembro IU = new IUPerfilMembro(this,true);
         IU.setLocationRelativeTo(this);
         IU.setVisible(true);
     }//GEN-LAST:event_perfilUsuarioActionPerformed
+
+    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
+        Sistema sys = Sistema.getinstancia();
+        int idx = -1;
+        Membro m = sys.curruser();
+        String email = userfield.getText();
+        if (m != null && email.equals(m.getEmail())) {
+            return;
+        }
+        for (int i = 0; i < sys.listamembros.size(); i++) {
+            if (sys.listamembros.get(i).getEmail().equals(email)) {
+                idx = i;
+                break;
+            }
+        }
+        if (idx < 0) {
+            welcome.setText("@ E-MAIL DE USUÁRIO INEXISTENTE");
+            return;
+        }
+        m = sys.listamembros.get(idx);
+        if (m.getSenha().equals(passfield.getText())) {
+            welcome.setText(m.getNome());
+            sys.setcurruser(idx);
+        } else {
+            welcome.setText("@ SENHA INCORRETA");
+        }
+    }//GEN-LAST:event_loginbtnActionPerformed
+
+    private void userfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userfieldActionPerformed
+
+    private void eventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eventosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,13 +326,20 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem cadastroCliente;
     private javax.swing.JMenuItem comprarProdutos;
     private javax.swing.JMenuItem dadosSalvosDeletarDados;
+    private javax.swing.JMenuItem eventos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton loginbtn;
     private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenu menuComprar;
     private javax.swing.JMenu menuDadosSalvos;
+    private javax.swing.JMenu menuOrganização;
     private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenu menuRelatorios;
+    private javax.swing.JPasswordField passfield;
     private javax.swing.JMenuItem perfilUsuario;
     private javax.swing.JMenuItem relatorioMembros;
+    private javax.swing.JTextField userfield;
+    private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
 }

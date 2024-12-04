@@ -11,7 +11,16 @@ import java.util.*;
  */
 public class Sistema {
     private static Sistema instancia = null;
-    public static List<Membro> listaMembros;
+    public static List<Membro> listamembros;
+    public static List<Produto> listaprodutos;
+    private static int curruserid;
+    public static Membro curruser() {
+        if (curruserid == -1) return null;
+        else return listamembros.get(curruserid);
+    }
+    public static void setcurruser(int id) {
+        curruserid = id;
+    }
     
     public static Sistema getinstancia() {
         if (instancia == null) {
@@ -20,13 +29,16 @@ public class Sistema {
         return instancia;
     }
     
+    
     private Sistema() {
-        listaMembros = new ArrayList<>();
+        curruserid = -1;
+        listamembros = new ArrayList<>();
+        listaprodutos = new ArrayList<>();
         // ...
-        if (listaMembros.size() == 0) {
+        if (listamembros.size() == 0) {
             Membro admin = new Membro();
-            admin.setNome("Administrador");
-            admin.setEmail("admin@churras.com.br");
+            admin.setNome("ADMINISTRADOR");
+            admin.setEmail("admin@admin.com");
             admin.setSenha("admin");
             admin.setIdMembro(0);
             admin.setStatusPagamento(StatusPagamento.ATIVO);
@@ -34,7 +46,15 @@ public class Sistema {
             admin.setEndereco("MUNDO VIRTUAL, 10");
             admin.setTipoUsuario(TipoUsuario.PERMANENTE);
             admin.setCategoriaAlimentar(CategoriaAlimentar.ONIVORO);
-            listaMembros.add(admin);
+            listamembros.add(admin);
+        }
+        if (listaprodutos.size() == 0) {
+            Produto p = new Produto();
+            p.setNomeProduto("CERVEJA CRISTAL");
+            p.setPreco(90.25f);
+            p.setIdProduto(0);
+            p.setCategoria(Categoria.bebidasAlcoolicas);
+            listaprodutos.add(p);
         }
     }
     

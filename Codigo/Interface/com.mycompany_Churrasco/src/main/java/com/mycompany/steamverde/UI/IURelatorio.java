@@ -30,7 +30,7 @@ public class IURelatorio extends javax.swing.JDialog {
     
     public void relatoriotodosmembros() {
         Sistema sys = Sistema.getinstancia();
-        String ln = String.format("- %d MEMBRO(S)\n\n", sys.listaMembros.size());
+        String ln = String.format("- %d MEMBRO(S)\n\n", sys.listamembros.size());
         String fmt = "NOME....: %s\n"+
                      "E-MAIL..: %s\n"+
                      "ENDEREÇO: %s\n"+
@@ -39,8 +39,8 @@ public class IURelatorio extends javax.swing.JDialog {
                      "TIPO-USU: %s\n"+
                      "STATUS-P: %s\n"+
                      "\n";
-        for (int i = 0; i < sys.listaMembros.size(); i++) {
-            Membro mem = sys.listaMembros.get(i);
+        for (int i = 0; i < sys.listamembros.size(); i++) {
+            Membro mem = sys.listamembros.get(i);
             ln = ln + String.format(fmt, 
                 mem.getNome(),
                 mem.getEmail(),
@@ -72,7 +72,7 @@ public class IURelatorio extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelTitulo.setText("RELATÓRIO");
+        labelTitulo.setText("Relatório");
 
         textRelatorio.setEditable(false);
         textRelatorio.setColumns(20);
@@ -88,11 +88,10 @@ public class IURelatorio extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(501, 501, 501))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                        .addComponent(labelTitulo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

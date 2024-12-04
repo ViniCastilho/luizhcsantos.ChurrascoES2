@@ -283,17 +283,17 @@ public class IUPrincipal extends javax.swing.JFrame {
         if (m == null) { return; }
         if (sys.currevent == null) {
             if (m.getTipoUsuario().equals(TipoUsuario.ORGANIZADOR)) {
+                Evento e = new Evento();
+                e.setOrganizador(m);
+                sys.currevent = e;
+            } else {
                 JOptionPane.showMessageDialog(
                     null,
                     "O próximo organizador não iniciou um evento.",
                     "Evento não encontrado",
                     JOptionPane.ERROR_MESSAGE
                 );
-            } else {
-                Evento e = new Evento();
-                e.setOrganizador(m);
-                sys.currevent = e;
-
+                return;
             }
         }
         

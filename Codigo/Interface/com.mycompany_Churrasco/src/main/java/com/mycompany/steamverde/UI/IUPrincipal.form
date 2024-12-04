@@ -18,6 +18,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroClienteActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Membro Convidado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuOrganiza&#xe7;&#xe3;o">
@@ -38,7 +46,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="eventos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eventos"/>
+                <Property name="text" type="java.lang.String" value="Evento"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventosActionPerformed"/>
@@ -61,21 +69,6 @@
               </AccessibilityProperties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatorioMembrosActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="menuDadosSalvos">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Dados salvos"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="dadosSalvosDeletarDados">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Deletar dados"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dadosSalvosDeletarDadosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -133,7 +126,7 @@
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="loginbtn" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="315" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="188" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -173,7 +166,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="welcome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="@"/>
+        <Property name="text" type="java.lang.String" value="... NENHUM USU&#xc1;RIO CARREGADO ..."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">

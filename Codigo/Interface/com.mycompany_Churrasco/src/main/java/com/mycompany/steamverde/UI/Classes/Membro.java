@@ -9,7 +9,6 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class Membro {
-    private int idMembro;
     private String nome;
     private String email;
     private String senha;
@@ -18,14 +17,6 @@ public class Membro {
     private String categoriaAlimentar;
     private String tipoUsuario;
     private String statusPagamento;
-
-    public int getIdMembro() {
-        return idMembro;
-    }
-
-    public void setIdMembro(int idMembro) {
-        this.idMembro = idMembro;
-    }
 
     public void setNome(String nome) {
         this.nome = nome;

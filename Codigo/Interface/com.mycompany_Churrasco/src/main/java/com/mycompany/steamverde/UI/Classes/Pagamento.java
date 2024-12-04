@@ -10,15 +10,52 @@ import java.time.LocalDate;
  * @author Microsoft
  */
 public class Pagamento {
-    private int idPagamento;
     private Evento evento;
     private Membro membro;
     private float valorPago;
     private LocalDate dataPagamento;
-    private StatusPagamento status;
+    private String status;
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
+    public void setMembro(Membro membro) {
+        this.membro = membro;
+    }
+
+    public void setValorPago(float valorPago) {
+        this.valorPago = valorPago;
+    }
+
+    public void setDataPagamento(LocalDate dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public Membro getMembro() {
+        return membro;
+    }
+
+    public float getValorPago() {
+        return valorPago;
+    }
+
+    public LocalDate getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public String getStatus() {
+        return status;
+    }
     
     public void realizarPagamento(float valor) {}
-    public StatusPagamento consultarStatus() { return new StatusPagamento(); }
-    public StatusPagamento verificarStatusPagamento(Participante participante) { return new StatusPagamento(); }
     public void atualizarStatusPagamento(Participante participante) {}
 }

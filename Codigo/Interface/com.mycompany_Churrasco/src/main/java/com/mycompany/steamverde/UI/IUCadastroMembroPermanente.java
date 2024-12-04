@@ -254,7 +254,6 @@ public class IUCadastroMembroPermanente extends javax.swing.JDialog {
         );
         Sistema sys = Sistema.getinstancia();
         Membro mem = new Membro();
-        mem.setIdMembro(sys.listamembros.size());
         mem.setNome(nome_text.getText());
         mem.setEmail(email_text.getText());
         mem.setSenha(senha_text.getText());

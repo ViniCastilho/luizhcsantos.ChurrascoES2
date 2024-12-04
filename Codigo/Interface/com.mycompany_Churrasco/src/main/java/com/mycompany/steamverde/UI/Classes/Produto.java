@@ -9,15 +9,10 @@ package com.mycompany.steamverde.UI.Classes;
  * @author Microsoft
  */
 public class Produto {
-    private int idProduto;
     private String nomeProduto;
     private String categoria;
     private float preco;
     private int quantidadeComprar;
-
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
-    }
 
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
@@ -33,10 +28,6 @@ public class Produto {
 
     public void setQuantidadeComprar(int quantidadeComprar) {
         this.quantidadeComprar = quantidadeComprar;
-    }
-
-    public int getIdProduto() {
-        return idProduto;
     }
 
     public String getNomeProduto() {
@@ -59,5 +50,4 @@ public class Produto {
         quantidadeComprar = novaQuantidade;
     }
     public float calcularValorTotal() { return preco*quantidadeComprar; }
-    public void registrarProduto(String nomeProduto, Categoria categoria, float preco, int quantidadeComprar) {}
 }

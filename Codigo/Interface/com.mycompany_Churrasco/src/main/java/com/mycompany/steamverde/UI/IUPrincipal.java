@@ -6,6 +6,7 @@ package com.mycompany.steamverde.UI;
 
 import java.util.List;
 import com.mycompany.steamverde.UI.*;
+import com.mycompany.steamverde.UI.Classes.Evento;
 import com.mycompany.steamverde.UI.Classes.Membro;
 import com.mycompany.steamverde.UI.Classes.Sistema;
 import com.mycompany.steamverde.UI.Classes.TipoUsuario;
@@ -45,13 +46,12 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         cadastroCliente = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuOrganização = new javax.swing.JMenu();
         comprarProdutos = new javax.swing.JMenuItem();
         eventos = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         relatorioMembros = new javax.swing.JMenuItem();
-        menuDadosSalvos = new javax.swing.JMenu();
-        dadosSalvosDeletarDados = new javax.swing.JMenuItem();
         menuPerfil = new javax.swing.JMenu();
         perfilUsuario = new javax.swing.JMenuItem();
 
@@ -65,7 +65,7 @@ public class IUPrincipal extends javax.swing.JFrame {
             }
         });
 
-        welcome.setText("@");
+        welcome.setText("... NENHUM USUÁRIO CARREGADO ...");
 
         jLabel3.setText("SENHA");
 
@@ -87,6 +87,14 @@ public class IUPrincipal extends javax.swing.JFrame {
         });
         menuCadastro.add(cadastroCliente);
 
+        jMenuItem1.setText("Membro Convidado");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(jMenuItem1);
+
         jMenuBar1.add(menuCadastro);
 
         menuOrganização.setText("Organização");
@@ -104,7 +112,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         });
         menuOrganização.add(comprarProdutos);
 
-        eventos.setText("Eventos");
+        eventos.setText("Evento");
         eventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eventosActionPerformed(evt);
@@ -127,18 +135,6 @@ public class IUPrincipal extends javax.swing.JFrame {
         relatorioMembros.getAccessibleContext().setAccessibleName("");
 
         jMenuBar1.add(menuRelatorios);
-
-        menuDadosSalvos.setText("Dados salvos");
-
-        dadosSalvosDeletarDados.setText("Deletar dados");
-        dadosSalvosDeletarDados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dadosSalvosDeletarDadosActionPerformed(evt);
-            }
-        });
-        menuDadosSalvos.add(dadosSalvosDeletarDados);
-
-        jMenuBar1.add(menuDadosSalvos);
 
         menuPerfil.setText("Perfil");
 
@@ -169,7 +165,7 @@ public class IUPrincipal extends javax.swing.JFrame {
                             .addComponent(welcome)
                             .addComponent(jLabel3)
                             .addComponent(loginbtn))
-                        .addGap(0, 315, Short.MAX_VALUE)))
+                        .addGap(0, 188, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -207,7 +203,12 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void comprarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarProdutosActionPerformed
         // TODO add your handling code here:
-        IUCompra IU = new IUCompra(this,true);
+        Sistema sys = Sistema.getinstancia();
+        Membro m = sys.curruser();
+        if (m == null || !m.getTipoUsuario().equals(TipoUsuario.ORGANIZADOR)) {
+            return;
+        }
+        IUProdutos IU = new IUProdutos(this,true);
         IU.setLocationRelativeTo(this);
         IU.setVisible(true);
     }//GEN-LAST:event_comprarProdutosActionPerformed
@@ -216,10 +217,6 @@ public class IUPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:    
         
     }//GEN-LAST:event_menuOrganizaçãoActionPerformed
-
-    private void dadosSalvosDeletarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dadosSalvosDeletarDadosActionPerformed
-        // TODO add your handling code here:               
-    }//GEN-LAST:event_dadosSalvosDeletarDadosActionPerformed
 
     private void relatorioMembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioMembrosActionPerformed
         // TODO add your handling code here:
@@ -280,7 +277,43 @@ public class IUPrincipal extends javax.swing.JFrame {
 
     private void eventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventosActionPerformed
         // TODO add your handling code here:
+        
+        Sistema sys = Sistema.getinstancia();
+        Membro m = sys.curruser();
+        if (m == null) { return; }
+        if (sys.currevent == null) {
+            if (m.getTipoUsuario().equals(TipoUsuario.ORGANIZADOR)) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "O próximo organizador não iniciou um evento.",
+                    "Evento não encontrado",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            } else {
+                Evento e = new Evento();
+                e.setOrganizador(m);
+                sys.currevent = e;
+
+            }
+        }
+        
+        UIEvento IU = new UIEvento();
+        IU.setLocationRelativeTo(this);
+        IU.setVisible(true);
     }//GEN-LAST:event_eventosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        Sistema sys = Sistema.getinstancia();
+        Membro m = sys.curruser();
+        if (m == null || m.getTipoUsuario().equals(TipoUsuario.CONVIDADO)) {
+            return;
+        }
+        IUCadastroMembroConvidado IUcli = new IUCadastroMembroConvidado();
+        IUcli.setLocationRelativeTo(this);
+        IUcli.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,14 +358,13 @@ public class IUPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadastroCliente;
     private javax.swing.JMenuItem comprarProdutos;
-    private javax.swing.JMenuItem dadosSalvosDeletarDados;
     private javax.swing.JMenuItem eventos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton loginbtn;
     private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenu menuDadosSalvos;
     private javax.swing.JMenu menuOrganização;
     private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenu menuRelatorios;

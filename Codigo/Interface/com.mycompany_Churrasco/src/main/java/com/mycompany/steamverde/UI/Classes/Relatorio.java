@@ -10,7 +10,6 @@ import java.time.LocalDate;
  * @author Microsoft
  */
 public class Relatorio {
-    private int idRelatorio;
     private int tipoRelatorio;
     private LocalDate dataGeracao;
     private String conteudo;

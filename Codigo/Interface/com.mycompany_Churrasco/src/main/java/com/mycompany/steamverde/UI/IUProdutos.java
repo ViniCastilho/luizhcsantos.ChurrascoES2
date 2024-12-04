@@ -23,18 +23,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Microsoft
  */
-public class IUCompra extends javax.swing.JDialog {
+public class IUProdutos extends javax.swing.JDialog {
 
     private void updatetable() {
         Sistema s = Sistema.getinstancia();
         DefaultTableModel model = (DefaultTableModel)(tableprod.getModel());
-        for (int i = 0; i < s.listamembros.size(); i++) {
-            Produto p;
-            p = s.listaprodutos.get(i);
+        model.setRowCount(0);
+        for (int i = 0; i < s.listaprodutos.size(); i++) {
+            Produto p = s.listaprodutos.get(i);
             model.addRow(new Object[]{
                 p.getNomeProduto(),
                 p.getCategoria(),
-                String.format("R$ %s", Float.toString(p.getPreco()))
+                String.format("R$ %.2f", p.getPreco())
             });
         }
     }
@@ -48,7 +48,7 @@ public class IUCompra extends javax.swing.JDialog {
         );
     }
     
-    public IUCompra(java.awt.Frame parent, boolean modal) {
+    public IUProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
@@ -86,6 +86,7 @@ public class IUCompra extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         prodprice = new javax.swing.JTextField();
         newprod = new javax.swing.JButton();
+        alterprice = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Venda");
@@ -131,6 +132,13 @@ public class IUCompra extends javax.swing.JDialog {
             }
         });
 
+        alterprice.setText("ALTERAR PREÇO");
+        alterprice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterpriceActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,7 +156,10 @@ public class IUCompra extends javax.swing.JDialog {
                             .addComponent(prodcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(prodprice, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(newprod))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(newprod)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(alterprice)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -172,7 +183,9 @@ public class IUCompra extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(prodprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(newprod)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newprod)
+                    .addComponent(alterprice))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
@@ -187,34 +200,90 @@ public class IUCompra extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         Sistema s = Sistema.getinstancia();
-        
+        prodname.setText(prodname.getText().toUpperCase());
         if (prodname.getText().length() == 0) {
             alertCadastro("Nome não preenchido.");
             return;
+        }
+        for (int i = 0; i < s.listaprodutos.size(); i++) {
+            if (s.listaprodutos.get(i).getNomeProduto().equals(prodname.getText())) {
+                alertCadastro("Produto com mesmo nome já existe.");
+                return;
+            }
         }
         
         float price = 0;
         try {
             price = Float.parseFloat(prodprice.getText());
+            if (price < 0) {
+                alertCadastro("Preço inválido.");
+                return;
+            }
         } catch (NumberFormatException n) {
             alertCadastro("Preço inválido.");
+            return;
         }
         
+        /** /
         JOptionPane.showMessageDialog(
             null, 
             "O cadastro do produto foi realizado com sucesso.",
             "Cadastro bem sucedido",
             JOptionPane.INFORMATION_MESSAGE
         );
+        //*/
         
         Produto p = new Produto();
-        p.setIdProduto(s.listaprodutos.size());
-        p.setNomeProduto(prodname.getText());
+        p.setNomeProduto(prodname.getText().toUpperCase());
         p.setPreco(price);
         p.setCategoria(prodcat.getSelectedItem().toString());
         
+        prodname.setText("");
+        prodprice.setText("");
+        
         s.listaprodutos.add(p);
+        updatetable();
     }//GEN-LAST:event_newprodActionPerformed
+
+    private void alterpriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterpriceActionPerformed
+        // TODO add your handling code here:
+        Sistema s = Sistema.getinstancia();
+        prodname.setText(prodname.getText().toUpperCase());
+        if (prodname.getText().length() == 0) {
+            alertCadastro("Nome não preenchido.");
+            return;
+        }
+        int idx = -1;
+        for (int i = 0; i < s.listaprodutos.size(); i++) {
+            if (s.listaprodutos.get(i).getNomeProduto().equals(prodname.getText())) {
+                idx = i;
+                break;
+            }
+        }
+        if (idx < 0) {
+            alertCadastro("Nenhum produto com o nome identificado.");
+            return;
+        }
+        float price = 0;
+        try {
+            price = Float.parseFloat(prodprice.getText());
+            if (price < 0) {
+                alertCadastro("Preço para modificação inválido.");
+                return;
+            }
+        } catch (NumberFormatException n) {
+            alertCadastro("Preço para modificação inválido.");
+            return;
+        }
+        JOptionPane.showMessageDialog(
+            null, 
+            "A alteração do produto foi realizada com sucesso.",
+            "Cadastro bem sucedido",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        s.listaprodutos.get(idx).setPreco(price);
+        updatetable();
+    }//GEN-LAST:event_alterpriceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,14 +302,18 @@ public class IUCompra extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IUCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IUCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IUCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IUCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IUProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -250,7 +323,7 @@ public class IUCompra extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                IUCompra dialog = new IUCompra(new javax.swing.JFrame(), true);
+                IUProdutos dialog = new IUProdutos(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -263,6 +336,7 @@ public class IUCompra extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alterprice;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
